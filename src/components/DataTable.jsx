@@ -19,6 +19,8 @@ export default function DataTable({
   onAdd,
   onEdit,
   onDelete,
+  onAssign,
+  onUpdateWearLevel,
   searchPlaceholder = "Search...",
   addLabel = "Add New",
   filters,
@@ -88,11 +90,13 @@ export default function DataTable({
                       {column.render ? column.render(row[column.key], row) : row[column.key]}
                     </TableCell>
                   ))}
-                  {(onEdit || onDelete) && (
+                  {(onEdit || onDelete || onAssign) && (
                     <TableCell className="text-right">
                       <Select onValueChange={(value) => {
                         if (value === 'edit' && onEdit) onEdit(row)
                         if (value === 'delete' && onDelete) onDelete(row)
+                        if (value === 'assign' && onAssign) onAssign(row)
+                        if (value === 'updateWearLevel' && onUpdateWearLevel) onUpdateWearLevel(row)
                       }}>
                         <SelectTrigger className="h-8 w-8 p-0 border-0 bg-transparent hover:bg-muted">
                           <MoreHorizontal className="h-4 w-4" />
@@ -101,6 +105,8 @@ export default function DataTable({
                         <SelectContent align="end" className="w-[160px]">
                           {onEdit && <SelectItem value="edit">Edit</SelectItem>}
                           {onDelete && <SelectItem value="delete" className="text-destructive focus:text-destructive">Delete</SelectItem>}
+                          {onAssign && <SelectItem value="assign">Assign</SelectItem>}
+                          {onUpdateWearLevel && <SelectItem value="updateWearLevel">Update Wear Level</SelectItem>}
                         </SelectContent>
                       </Select>
                     </TableCell>
