@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
+import { Checkbox } from "@/components/ui/checkbox"
 
 export default function FormRenderer({ fields, initialData = {}, onSubmit, onCancel, submitLabel = "Submit" }) {
   const [formData, setFormData] = useState(initialData)
@@ -96,6 +97,14 @@ export default function FormRenderer({ fields, initialData = {}, onSubmit, onCan
               ))}
             </SelectContent>
           </Select>
+        )
+      case "checkbox":
+        return (
+          <Checkbox
+            {...commonProps}
+            checked={formData[field.name] || false}
+            onCheckedChange={(value) => handleChange(field.name, value)}
+          />
         )
 
       default:
