@@ -105,17 +105,22 @@ export default function FormRenderer({ fields, initialData = {}, onSubmit, onCan
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      {fields.map((field) => (
-        <div key={field.name} className="space-y-2">
-          <Label htmlFor={field.name}>
-            {field.label}
-            {field.required && <span className="text-destructive ml-1">*</span>}
-          </Label>
-          {renderField(field)}
-          {errors[field.name] && <p className="text-sm text-destructive">{errors[field.name]}</p>}
-          {field.description && <p className="text-sm text-muted-foreground">{field.description}</p>}
-        </div>
-      ))}
+      {fields.map((field) => {
+        if (field.condition && !field.condition(formData)) {
+          return null
+        }
+        return (
+          <div key={field.name} className="space-y-2">
+            <Label htmlFor={field.name}>
+              {field.label}
+              {field.required && <span className="text-destructive ml-1">*</span>}
+            </Label>
+            {renderField(field)}
+            {errors[field.name] && <p className="text-sm text-destructive">{errors[field.name]}</p>}
+            {field.description && <p className="text-sm text-muted-foreground">{field.description}</p>}
+          </div>
+        )
+      })}
       <div className="flex gap-3 pt-4">
         <Button type="submit" className="flex-1">
           {submitLabel}
