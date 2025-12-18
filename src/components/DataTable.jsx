@@ -21,6 +21,8 @@ export default function DataTable({
   onDelete,
   onAssign,
   onUpdateWearLevel,
+  onAssignDriver,
+  onTelechargeMissionOrder,
   searchPlaceholder = "Search...",
   addLabel = "Add New",
   filters,
@@ -97,6 +99,8 @@ export default function DataTable({
                         if (value === 'delete' && onDelete) onDelete(row)
                         if (value === 'assign' && onAssign) onAssign(row)
                         if (value === 'updateWearLevel' && onUpdateWearLevel) onUpdateWearLevel(row)
+                        if (value === 'assignDriver' && onAssignDriver) onAssignDriver(row)
+                        if (value === 'telechargeMissionOrder' && onTelechargeMissionOrder) onTelechargeMissionOrder(row)
                       }}>
                         <SelectTrigger className="h-8 w-8 p-0 border-0 bg-transparent hover:bg-muted">
                           <MoreHorizontal className="h-4 w-4" />
@@ -107,6 +111,8 @@ export default function DataTable({
                           {onDelete && <SelectItem value="delete" className="text-destructive focus:text-destructive">Delete</SelectItem>}
                           {onAssign && <SelectItem value="assign">Assign</SelectItem>}
                           {onUpdateWearLevel && <SelectItem value="updateWearLevel">Update Wear Level</SelectItem>}
+                          {onAssignDriver && <SelectItem value="assignDriver">Assign Driver</SelectItem>}
+                          {onTelechargeMissionOrder && <SelectItem value="telechargeMissionOrder">Telecharge Mission Order</SelectItem>}
                         </SelectContent>
                       </Select>
                     </TableCell>
