@@ -9,7 +9,7 @@ import tripsReducer from "./slices/tripsSlice"
 import fuelRecordsReducer from "./slices/fuelRecordsSlice"
 import maintenanceReducer from "./slices/maintenanceSlice"
 import alertsReducer from "./slices/alertsSlice"
-import missionOrdersReducer from "./slices/missionOrdersSlice"
+
 
 export const store = configureStore({
   reducer: {
@@ -23,6 +23,5 @@ export const store = configureStore({
     fuelRecords: fuelRecordsReducer,
     maintenance: maintenanceReducer,
     alerts: alertsReducer,
-    missionOrders: missionOrdersReducer,
   },
 })

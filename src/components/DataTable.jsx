@@ -22,6 +22,7 @@ export default function DataTable({
   onAssign,
   onUpdateWearLevel,
   onAssignDriver,
+  onSort,
   onTelechargeMissionOrder,
   searchPlaceholder = "Search...",
   addLabel = "Add New",
@@ -50,6 +51,9 @@ export default function DataTable({
             />
           </div>
           {filters && <div className="flex items-center gap-2">{filters}</div>}
+          <Button onClick={onSort}>
+           sort
+          </Button>
         </div>
         {onAdd && (
           <Button onClick={onAdd}>

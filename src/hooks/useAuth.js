@@ -20,7 +20,6 @@ export const useAuth = () => {
       dispatch(
         loginSuccess({
           accessToken: response.data.access_token,
-          refreshToken: response.data.refresh_token,
         }),
       )
 
@@ -43,21 +42,7 @@ export const useAuth = () => {
       dispatch(loginStart())
       const response = await authService.register(userData)
 
-      dispatch(
-        loginSuccess({
-          accessToken: response.data.access_token,
-          refreshToken: response.data.refresh_token,
-        }),
-      )
-
-      dispatch(
-        setUser({
-          profile: response.data.user,
-          role: response.data.user.role,
-        }),
-      )
-
-      navigate("/dashboard")
+      navigate("/login")
     } catch (err) {
       dispatch(loginFailure(err.response?.data?.message || "Registration failed"))
       throw err

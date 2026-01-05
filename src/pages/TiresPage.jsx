@@ -13,7 +13,6 @@ import { setTires, addTire, updateTire, deleteTire, setPagination, setFilters } 
 import { tiresService } from "../services/api/tiresService"
 import { trucksService } from "../services/api/trucksService"
 import { trailersService } from "../services/api/trailersService"
-import { usePermissions } from "../hooks/usePermissions"
 import { cn } from "../utils/cn"
 
 const positions = [
@@ -81,7 +80,6 @@ const tireFormFieldsUpdate = [
 export default function TiresPage() {
   const dispatch = useDispatch()
   const { tires, loading, pagination, filters } = useSelector((state) => state.tires)
-  const { canManageTires } = usePermissions()
 
   const [drawerOpen, setDrawerOpen] = useState(false)
   const [editingTire, setEditingTire] = useState(null)

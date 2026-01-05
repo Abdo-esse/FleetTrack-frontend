@@ -33,14 +33,12 @@ const navigationItems = [
   { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard, roles: ["Admin", "Chauffeur"] },
   { name: "Trucks", href: "/trucks", icon: Truck, roles: ["Admin", "Chauffeur"] },
   { name: "Trailers", href: "/trailers", icon: Container, roles: ["Admin", "Chauffeur"] },
-  { name: "Tires", href: "/tires", icon: CircleDot, roles: ["Admin", "Chauffeur"] },
+  { name: "Tires", href: "/tires", icon: CircleDot, roles: ["Admin", ] },
   { name: "Drivers", href: "/drivers", icon: Users, roles: ["Admin"] },
-  { name: "Trips", href: "/trips", icon: Route, roles: ["Admin", "Chauffeur"] },
-  { name: "Fuel Records", href: "/fuel-records", icon: Fuel, roles: ["Admin", "Chauffeur"] },
+  { name: "Trips", href: "/trips", icon: Route, roles: ["Admin",] },
+  { name: "Fuel Records", href: "/fuel-records", icon: Fuel, roles: ["Admin", ] },
   { name: "Maintenance", href: "/maintenance", icon: Wrench, roles: ["Admin"] },
-  { name: "Alerts", href: "/alerts", icon: AlertTriangle, roles: ["Admin", "Chauffeur"] },
-  { name: "Mission Orders", href: "/mission-orders", icon: FileText, roles: ["Admin", "Chauffeur"] },
-  { name: "Settings", href: "/settings", icon: Settings, roles: ["Admin", "Chauffeur"] },
+  { name: "Alerts", href: "/alerts", icon: AlertTriangle, roles: ["Admin"] },
 ]
 
 export default function AppSidebar() {

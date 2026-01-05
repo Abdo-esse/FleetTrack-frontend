@@ -16,8 +16,6 @@ export default function RegisterPage() {
     email: "",
     password: "",
     confirmPassword: "",
-    phone: "",
-    licenseNumber: "",
   })
   const [validationError, setValidationError] = useState("")
 
@@ -47,9 +45,6 @@ export default function RegisterPage() {
         name: formData.name,
         email: formData.email,
         password: formData.password,
-        phone: formData.phone,
-        license_number: formData.licenseNumber,
-        role: "chauffeur",
       })
     } catch (err) {
       // Error handled by useAuth

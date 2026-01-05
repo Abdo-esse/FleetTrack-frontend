@@ -16,8 +16,7 @@ import TripsPage from "./pages/TripsPage"
 import FuelRecordsPage from "./pages/FuelRecordsPage"
 import MaintenancePage from "./pages/MaintenancePage"
 import AlertsPage from "./pages/AlertsPage"
-import MissionOrdersPage from "./pages/MissionOrdersPage"
-import SettingsPage from "./pages/SettingsPage"
+
 
 function App() {
   const { isAuthenticated } = useAuth()
@@ -54,8 +53,6 @@ function App() {
         <Route path="/fuel-records" element={<FuelRecordsPage />} />
         <Route path="/maintenance" element={<MaintenancePage />} />
         <Route path="/alerts" element={<AlertsPage />} />
-        <Route path="/mission-orders" element={<MissionOrdersPage />} />
-        <Route path="/settings" element={<SettingsPage />} />
       </Route>
 
       {/* Redirect */}

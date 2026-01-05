@@ -49,7 +49,12 @@ const truckFormFieldsUpdate = [
       { value: "maintenance", label: "Maintenance" },
     ],
   },
-  { name: "mileage", label: "Mileage (km)", type: "number", required: true, placeholder: "50000" },
+  { 
+    name: "mileage",
+     label: "Mileage (km)",
+      type: "number",
+      required: true,
+       placeholder: "50000" },
 ]
 
 export default function TrucksPage() {
@@ -60,6 +65,16 @@ export default function TrucksPage() {
   const [editingTruck, setEditingTruck] = useState(null)
   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false)
   const [truckToDelete, setTruckToDelete] = useState(null)
+  const [sort, setSort] = useState("asc")
+  
+  console.log("Current sort order:", trucks)
+  const truckFilter= trucks.slice().sort((a,b)=>{
+    if(sort === "asc"){
+      return a.mileage - b.mileage
+    }
+    return b.mileage - a.mileage
+      
+  })
 
   useEffect(() => {
     fetchTrucks()
@@ -129,13 +144,20 @@ export default function TrucksPage() {
       console.error("Failed to delete truck:", error)
     }
   }
+  const handleSort = () => {
+    setSort(sort === "asc" ? "desc" : "asc")
+  }
 
   const columns = [
     { key: "registrationNumber", label: "Registration", className: "font-medium" },
     { key: "brand", label: "Brand" },
     { key: "model", label: "Model" },
     { key: "createdAt", label: "Created At" },
-    { key: "mileage", label: "Mileage", render: (value) => `${value?.toLocaleString()} km` },
+    { key: "mileage", label: "Mileage",
+       render: (value, row) =>{
+          return <span > {value?.toLocaleString()} km</span>
+
+       } , },
     { key: "status", label: "Status", render: (value) => <StatusBadge status={value} /> },
   ]
 
@@ -162,7 +184,7 @@ export default function TrucksPage() {
 
       <DataTable
         columns={columns}
-        data={trucks}
+        data={truckFilter}
         loading={loading}
         pagination={pagination}
         onPageChange={(page) => dispatch(setPagination({ page }))}
@@ -171,6 +193,7 @@ export default function TrucksPage() {
         onAdd={handleAdd }
         onEdit={handleEdit }
         onDelete={handleDeleteClick }
+        onSort={handleSort}
         searchPlaceholder="Search trucks..."
         addLabel="Add Truck"
         filters={filterComponent}
